@@ -16,12 +16,12 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py
 
 # copy flask-api requirements file and install modules
-COPY ./flask-api/requirements.txt ./
+COPY ./requirements.txt ./
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
 # copy flask code
-COPY ./flask-api/app.py .
+COPY ./app.py .
 
 # ------------------------------------------------------------------------------
 # Serve flask-api with gunicorn
