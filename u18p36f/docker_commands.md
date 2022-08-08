@@ -23,6 +23,8 @@ u18p36f001   latest    13fd8393623e   13 seconds ago   329MB
 
 ```
 docker run -p 5000:5000 upng001
+
+docker run -p 81:80 -p 5001:5001 -p 8081:8080 -p 5672:5672 -p 15672:15672 -p 5566:5566 --name u18p36f001c001 u18p36f001
 ```
 
 # Start bash
