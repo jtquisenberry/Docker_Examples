@@ -1,7 +1,0 @@
-elasticsearch
-numpy
-openpyxl
-pandas
-xlrd
-flask
-Werkzeug
