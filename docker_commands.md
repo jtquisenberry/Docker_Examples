@@ -139,3 +139,65 @@ https://stackoverflow.com/questions/19335444/how-do-i-assign-a-port-mapping-to-a
 
 1. Restart the Docker service.
 1. Start the container.
+
+
+# Update One Container in docker-compose App
+
+https://stackoverflow.com/questions/39168239/update-only-one-container-via-docker-compose
+
+Just run `docker-compose up -d` again (without `down` / `stop` / `kill` before).
+
+Initial `docker-compose.yml`:
+
+    version: "2"
+
+    services:
+      db1:
+        command: mongod
+        image: mongo:3.2.4
+        ports:
+          - "27020:27017"
+
+      db2:
+        command: mongod
+        image: mongo:3.2.4
+        ports:
+          - "27021:27017"
+
+Update `db2`:
+
+    version: "2"
+
+    services:
+      db1:
+        command: mongod
+        image: mongo:3.2.4
+        ports:
+          - "27020:27017"
+
+      db2:
+        command: mongod
+        image: mongo:3.2.6
+        ports:
+          - "27021:27017"
+
+Run `docker-compose up -d` again:
+
+    Pulling db2 (mongo:3.2.6)...
+    3.2.6: Pulling from library/mongo
+    47994b92ab73: Pull complete
+    a3ed95caeb02: Pull complete
+    71b6becd9768: Pull complete
+    7d5d40f9dc7b: Pull complete
+    9dc152e647de: Pull complete
+    3f1f69340f17: Pull complete
+    82a29b50f1d2: Pull complete
+    97869c61a050: Pull complete
+    50aa2bf3bccc: Pull complete
+    03913f2c5b05: Pull complete
+    Digest: sha256:29ee114c0ce96494553cd72f18d92935b36778b77bce167fc9962e442d8c7647
+    Status: Downloaded newer image for mongo:3.2.6
+    composetest_db1_1 is up-to-date
+    Recreating composetest_db2_1 
+
+The last two lines of the output show the expected behavior. 
