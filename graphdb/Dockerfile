@@ -1,0 +1,4 @@
+FROM neo4j:5.26.32
+
+EXPOSE 7473 7474 7687
+VOLUME ["/data"]
